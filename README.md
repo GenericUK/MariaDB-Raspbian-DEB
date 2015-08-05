@@ -69,7 +69,7 @@ mysql_upgrade<br>
 sudo /etc/init.d/mysql restart<br>
 
 #NOTES
-I only installed this as a replacement, and haven't tried as a fresh install. If you needs some more help please see the help pages on https://mariadb.com. There's also more details on tailoring your setup to take better advantage of the new MariaDB features.
+I only installed this as a replacement, and haven't tried as a fresh install. If you need some more help please see the knowledge base pages on https://mariadb.com. There's also more details on tailoring your setup to take better advantage of the new MariaDB features.
 
 https://mariadb.com/kb/en/mariadb/upgrading-from-mysql-to-mariadb/<br>
 https://mariadb.com/kb/en/mariadb/mysql_upgrade/<br>
