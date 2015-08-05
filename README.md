@@ -32,5 +32,5 @@ MariaDB default location is /usr/local/mysql and the executables are in /usr/loc
 1. 
 
 
-I'm writing them now...
+I'm writing this now...
 
