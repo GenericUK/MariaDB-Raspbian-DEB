@@ -30,6 +30,8 @@ sudo dpkg -i /DOWLOAD_LOCATION/mariadb_10.0.20-1_armhf.deb
 
 **MariaDB default location is /usr/local/mysql and the executables are in /usr/local/mysql/bin. On Raspbian/Debian they would have been in /usr/bin, so we need to update our MariaDB/MySQL config files if your replacing MySQL.**
 
+**If your not replacing an existing MySQL install you will need to get conf/init files from https://github.com/allfs/mariadb/tree/master/debian/additions
+
 sudo nano /etc/mysql/my.cnf
 * basedir = /usr/local/mysql
 * lc-messages-dir = /usr/local/mysql/share
@@ -66,6 +68,12 @@ sudo /etc/init.d/mysql start<br>
 mysql_upgrade<br>
 sudo /etc/init.d/mysql restart<br>
 
+#NOTES
+I only installed this as a replacement, and haven't tried as a fresh install. If you needs some more help please see the help pages on https://mariadb.com. There's also more details on tailoring your setup to take better advantage of the new MariaDB features.
 
-There's still more to come...
+https://mariadb.com/kb/en/mariadb/upgrading-from-mysql-to-mariadb/
+
+https://mariadb.com/kb/en/mariadb/mysql_upgrade/
+
+
 
