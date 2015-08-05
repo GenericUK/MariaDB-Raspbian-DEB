@@ -13,7 +13,7 @@ Compiling MariaDB was a bit of a trick on Raspian as it requires gcc & g++ packa
 2. If your on a live production server you'll probably want to stop your web server now
 3. sudo service mysql stop **[OR]** sudo /etc/init.d/mysql stop
 
-**Uninstall MySQL (if installed)**
+**Uninstall MySQL (if installed)**<br>
 Because MariaDB is a drop in replacement for MySQL most of the libraries should work, however apt-get did want to uninstall most of it so I let it and also ran auto-remove just to finish the job. 
 
 Don't purge if you want to keep your existing MySQL config's and databases. I kept all mine.
