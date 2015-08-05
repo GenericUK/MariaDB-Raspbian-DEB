@@ -28,10 +28,39 @@ Don't purge if you want to keep your existing MySQL config's and databases. I ke
 
 # POST INSTALL
 
-MariaDB default location is /usr/local/mysql and the executables are in /usr/local/mysql/bin. On Raspian/Debian they would have been in /usr/bin, so we need to update our MariaDB/MySQL config files if your replacing MySQL.
+MariaDB default location is /usr/local/mysql and the executables are in /usr/local/mysql/bin. On Raspbian/Debian they would have been in /usr/bin, so we need to update our MariaDB/MySQL config files if your replacing MySQL.
 
-1. 
+1. sudo nano /etc/mysql/my.cnf
+* basedir = /usr/local/mysql
+* lc-messages-dir = /usr/local/mysql/share
+
+2. sudo nano /etc/mysql/debian-start
+* source /usr/local/mysql/debian-start.inc.sh
+* MYSQL="/usr/local/mysql/bin/mysql --defaults-file=/etc/mysql/debian.cnf"
+* MYADMIN="/usr/local/mysql/bin/mysqladmin --defaults-file=/etc/mysql/debian.cnf"
+* MYUPGRADE="/usr/local/mysql/bin/mysql_upgrade --defaults-extra-file=/etc/mysql/debian.cnf"
+
+Now we need to add a replacement debian-start.inc.sh which will be missing after the uninstalling MySQL
+3. sudo wget --no-check-certificate https://raw.githubusercontent.com/allfs/mariadb/master/debian/additions/debian-start.inc.sh -P /usr/local/mysql/
+
+We now need to symlink to libmysqlclient if it was uninstalled
+4. sudo ln -s /usr/local/mysql/lib/libmysqlclient.so.18 /usr/lib/libmysqlclient.so.18
+
+Right we also need to add the new bin location to bashrc
+5. nano .bashrc
+* MYSQL_MARIADB_BIN=/usr/local/mysql
+* PATH=$MYSQL_MARIADB_BIN/bin:$PATH
+6. source .bashrc
+
+I also had to create a socket location, this may get done on a reboot but who wants to do that.
+7. sudo mkdir /var/run/mysqld
+8. chown -R mysql:root /var/run/mysqld
+
+Okay lets fire it up and do an upgrade
+9. sudo /etc/init.d/mysql start
+10. mysql_upgrade
+11. sudo /etc/init.d/mysql restart
 
 
-I'm writing this now...
+There's still more to come...
 
