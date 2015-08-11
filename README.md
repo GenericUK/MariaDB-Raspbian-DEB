@@ -30,7 +30,7 @@ sudo dpkg -i /DOWLOAD_LOCATION/mariadb_10.0.20-1_armhf.deb
 
 **MariaDB default location is /usr/local/mysql and the executables are in /usr/local/mysql/bin. On Raspbian/Debian they would have been in /usr/bin, so we need to update our MariaDB/MySQL config files if your replacing MySQL.**
 
-**If your not replacing an existing MySQL install you will need to get conf/init files from https://github.com/allfs/mariadb/tree/master/debian/additions
+**If your not replacing an existing MySQL install you will need to get conf/init files from https://github.com/MariaDB/server/tree/10.1/debian/additions
 
 sudo nano /etc/mysql/my.cnf
 * basedir = /usr/local/mysql
@@ -44,7 +44,7 @@ sudo nano /etc/mysql/debian-start
 
 **Now we need to add a replacement debian-start.inc.sh which will be missing after the uninstalling MySQL**
 
-sudo wget --no-check-certificate<br> https://raw.githubusercontent.com/allfs/mariadb/master/debian/additions/debian-start.inc.sh -P /usr/local/mysql/
+sudo wget --no-check-certificate<br> https://raw.githubusercontent.com/MariaDB/server/10.1/debian/additions/debian-start.inc.sh -P /usr/local/mysql/
 
 We now need to symlink to libmysqlclient if it was uninstalled
 
@@ -73,7 +73,7 @@ I only installed this as a replacement, and haven't tried as a fresh install. If
 
 https://mariadb.com/kb/en/mariadb/upgrading-from-mysql-to-mariadb/<br>
 https://mariadb.com/kb/en/mariadb/mysql_upgrade/<br>
-https://github.com/allfs/mariadb/tree/master/debian/additions<br>
+https://github.com/MariaDB/server/tree/10.1/debian/additions<br>
 
 
 
