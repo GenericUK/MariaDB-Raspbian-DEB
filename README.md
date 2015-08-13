@@ -65,7 +65,7 @@ chown -R mysql:root /var/run/mysqld
 **Okay lets fire it up and do an upgrade**
 
 sudo /etc/init.d/mysql start<br>
-mysql_upgrade<br>
+mysql_upgrade -u root -p<br>
 sudo /etc/init.d/mysql restart<br>
 
 #NOTES
